@@ -1,0 +1,53 @@
+Juego de damas posta en python -> https://github.com/dcubero/damas-python
+Juego de damas chinas con inteligencia como ejemplo en ruby -> https://github.com/khiav223577/ChineseCheckersBot
+
+INTELIGENCIA
+evaluar_tablero(tablero) -> real
+Cómo evalúo? -> DEFINIR
+
+SI LUEGO DE MI JUGADA QUEDA EL TABLERO:
+Lista de posibles resultados al mover -> DEFINIR
+
+FALTA VER COMO SE HACE O REPRESENTA
+    tablero
+    jugadores
+    jugadas
+    movimientos posibles
+    tableros ganadores/perdedores
+    se comen fichas? -> VER
+
+GAME
+game {
+    # inicialización
+	board: matriz de enteros?
+	player1, player2: Player
+	turno = player1
+    
+    # loop "infinito" hasta que alguien gane
+    while !nadie_gano
+        if (turno = PLAYER_ONE) {
+            pos = player_one.play(board)
+        } else{
+        ...
+        }
+        insertar_movimiento_en_tablero(pos, turno)
+        cambiar_turno
+    end
+    quien_gano? => Imprimir GANASTE o PERDISTE
+}
+
+play {
+    for i=1 to todas_posibles_jugadas
+        evaluar_tablero 
+    end
+    return la_mejor -> tener en cuenta que se debe saber que ficha y a que posición
+}
+
+
+
+
+INFORME
+Primero pensamos en como representar el juego, incluyendo el tablero, los jugadores, las jugadas, etc. Tambien el flujo del programa.
+Luego elegimos los criterios para evaluar que tan bueno es un tablero. 
+Luego contar como entrenamos a los jugadores, funciones, etc.
+Resultados.

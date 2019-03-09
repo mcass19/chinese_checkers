@@ -3,7 +3,16 @@ Juego de damas chinas con inteligencia como ejemplo en ruby -> https://github.co
 
 INTELIGENCIA
 evaluar_tablero(tablero) -> real
-Cómo evalúo? -> DEFINIR
+Cómo evalúo? 
+    V: B -> real
+    V(b) ganador = 100
+    V(b) perdedor = -100
+    V(b) empate = 0
+    V'(b) = w0 + w1 * promedio_distancia_negras + w2 * promedio_distancia_rojas
+            + w3 * cantidad_de_negras_en_base_contraria + w4 * cantidad_de_rojas_en_base_contraria
+            
+            
+    en principio no -> + w5 * cantidad_de_negras_amenazando_base_contraria + w6 * cantidad_de_rojas_amenazando_base_contraria
 
 SI LUEGO DE MI JUGADA QUEDA EL TABLERO:
 Lista de posibles resultados al mover -> DEFINIR
@@ -14,7 +23,6 @@ FALTA VER COMO SE HACE O REPRESENTA
     jugadas
     movimientos posibles
     tableros ganadores/perdedores
-    se comen fichas? -> VER
 
 GAME
 game {

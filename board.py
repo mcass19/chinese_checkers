@@ -1,10 +1,8 @@
-import set
+from players.player import Player
 
 class Board(object):
-    PLAYER_ONE = 1
-    PLAYER_TWO = 2
 
-    def __init__(self, width, height, current_player):
+    def __init__(self, width, height):
         self.width = width
         self.height = height
         self.current_player = None
@@ -30,6 +28,8 @@ class Board(object):
         if self.current_player == 1:
             self.pieces_p1[index] = position_to_move
             self.current_player = 2
+            print('jugador 1, movio el indice ' + str(index) + ' a la posicion ' + str(position_to_move))
         else:
             self.pieces_p2[index] = position_to_move
             self.current_player = 1
+            print('jugador 2, movio el indice ' + str(index) + ' a la posicion ' + str(position_to_move))

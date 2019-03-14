@@ -15,7 +15,7 @@ wons_p2 = 0
 
 print('*******CHINESE CHECKERS*******')
 
-for i in range(0, 200):
+for i in range(1):
     game = Game(board)
     if random.choice([True, False]):
         winner = game.play_game(p1, p2, 1)
@@ -24,7 +24,7 @@ for i in range(0, 200):
         else:
             wons_p2 +=1
     else:
-        winner = game.play_game(p2, p1, 2)
+        winner = game.play_game(p1, p2, 2)
         if winner == 1:
             wons_p2 +=1
         else:

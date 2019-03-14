@@ -22,14 +22,17 @@ class PlayerAI(Player):
 
     #--------------------------------------------------------------------------------------------
             
-    def do_jump(self, piece_to_jump, index_piece_jumping, initial_position, board):
+    def do_jump(self, piece_to_jump, index_piece_jumping, initial_position,visited_positions, board):
         jump_move = (0,0)
-        print('indice de la ficha que quiere saltar ' + str(index_piece_jumping) + ' posicion de la ficha a saltar ' + str(piece_to_jump))
+        #print('indice de la ficha que quiere saltar ' + str(index_piece_jumping) + ' posicion de la ficha a saltar ' + str(piece_to_jump))
         if(self.id == 1): 
             piece_jumping = board.pieces_p1[index_piece_jumping]
         else:
             piece_jumping = board.pieces_p2[index_piece_jumping]
                
+
+        visited_positions.append(piece_jumping)
+
         # se setea el valor de i
         if (piece_jumping[0] < piece_to_jump[0]):
             jump_move = (piece_jumping[0] + 2, piece_jumping[1])
@@ -46,17 +49,19 @@ class PlayerAI(Player):
         else:
             jump_move = (jump_move[0], piece_jumping[1])
 
-        print('intento de salto ' + str(jump_move))
+        #print('intento de salto ' + str(jump_move))
         if(jump_move[0] <= 0 or jump_move[0] >= 10 or
            jump_move[1] <= 0 or jump_move[1] >= 10 or
            (jump_move in board.pieces_p1) or
-           (jump_move in board.pieces_p2) or (jump_move == initial_position)):
+           (jump_move in board.pieces_p2) or (jump_move == initial_position) or
+           (jump_move in visited_positions)):
             # No puedo realizar el salto:
             #   - La ficha se fue de rango
             #   - Hay otra ficha en el lugar que va a saltar
-            print('no salto')
+            #print('no salto')
             return (piece_jumping, -1)
         
+
         
         # Hago el cambio en el stack
         previous_move = (0,0)
@@ -77,7 +82,7 @@ class PlayerAI(Player):
             if (next_move != piece_to_jump and 
                (next_move in board.pieces_p1 or next_move in board.pieces_p2)):
                 # Puedo dar un salto. Llamo a do_jump que es recursiva
-                (next_move, next_value) = self.do_jump(next_move, index_piece_jumping, initial_position, board)
+                (next_move, next_value) = self.do_jump(next_move, index_piece_jumping, initial_position,visited_positions, board)
                 if (next_value > max_value):
                     max_value = next_value
                     position_to_move = next_move
@@ -114,11 +119,12 @@ class PlayerAI(Player):
                 next_move = (pieces[index][0] + i, pieces[index][1] + j) # Movimiento a realizar inmediatamente
                 next_value = 0                                          # Valor del tablero despues de hacer el movimiento
                 
-                if (next_move[0] >= 0 and next_move[0] <= 9 and next_move[1] >= 0 and next_move[1] <= 9):
+                if (next_move[0] > 0 and next_move[0] <= 9 and next_move[1] > 0 and next_move[1] <= 9):
                     # El movimiento no se va del tablero
                     if next_move in _board.pieces_p1 or next_move in _board.pieces_p2:
                         # Puedo dar un salto. Llamo a do_jump que es recursiva
-                        (next_move, next_value) = self.do_jump(next_move, index, pieces[index], _board)
+                        aux_list = []
+                        (next_move, next_value) = self.do_jump(next_move, index, pieces[index],aux_list, _board)
                         if next_value != -1:
                             can_move = True
                     else:

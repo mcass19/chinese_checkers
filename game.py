@@ -1,7 +1,26 @@
 from board import Board
 from players.player import Player
+import os
 
 class Game(object):
+
+
+    def print_board(self,board):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        for i in range(1,10):
+            line = ""
+            for j in range(1,10):
+                if (i,j) in board.pieces_p1:
+                    line = line + "| 1 / " + str(board.pieces_p1.index((i,j)))
+                elif (i,j) in board.pieces_p2:
+                    line = line + "| 2 / " + str(board.pieces_p2.index((i,j)))
+                else:
+                    line = line + "|      "
+            line = line + "|"
+            print(line)
+        print(" Indice | Pos P1 | Pos P2")
+        for x in range(10):
+            print("     " + str(x) + "  | " + str(board.pieces_p1[x]) + " | " + str(board.pieces_p2[x]))
 
     def __init__(self, board: Board):
         self.board = board
@@ -28,6 +47,8 @@ class Game(object):
                 index, position_to_move = p2.do_move(self.board)
                 self.board.do_move(index, position_to_move)
                 first_movement = False
+
+            self.print_board(self.board)
             end, winner = self.board.end_of_game()
             if end:
-                return winner
+                return winner              

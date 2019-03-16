@@ -1,0 +1,46 @@
+Pesos luego de entrenamiento contra IA (100)
+0.7598392425561362
+-0.2415337906921801
+0.8305519599257349
+-0.1878905588871544
+0.7580523540655926
+-0.24418324928308083
+
+IA vs IA
+    Distinta taza de aprendizaje (0.1 y 0.01)
+        P1 = 
+        P2 = 
+    Distinta taza de aprendizaje (0.1 y 0.001)
+        P1 = 
+        P2 = 
+    Con jugador 1 recalculando pesos y 2 no -> De aca salen pesos de IA entrenada 1
+        P1 = 53
+        P2 = 47
+
+IA entrenada 1 -> Pesos luego de entrenamiento contra IA
+0.7598392425561362
+-0.2415337906921801
+0.8305519599257349
+-0.1878905588871544
+0.7580523540655926
+-0.24418324928308083
+
+IA entrenada 2 = Pesos luego de entrenamiento contra Random
+
+
+IA vs random
+    P1 = 
+    P2 = 
+
+IA entrenada 1 vs IA entrenada 2 (100 partidos)
+    P1 = 
+    P2 = 
+
+
+Otros pesos utiles
+0.8393036102267846
+-0.16123300711821054
+0.932658401465634
+-0.0806998959667279
+0.8363012553567968
+-0.16271235866262249

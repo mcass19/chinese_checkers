@@ -10,9 +10,7 @@ Cómo evalúo?
     V(b) empate = 0
     V'(b) = w0 + w1 * promedio_distancia_negras + w2 * promedio_distancia_rojas
             + w3 * cantidad_de_negras_en_base_contraria + w4 * cantidad_de_rojas_en_base_contraria
-            
-            
-    en principio no -> + w5 * cantidad_de_negras_amenazando_base_contraria + w6 * cantidad_de_rojas_amenazando_base_contraria
+            + w5 * promedio_distancia_negras_fuera_de_la_base + w6 * promedio_distancia_rojas_fuera_de_la_base
 
 SI LUEGO DE MI JUGADA QUEDA EL TABLERO:
 Lista de posibles resultados al mover -> DEFINIR
@@ -59,3 +57,24 @@ Primero pensamos en como representar el juego, incluyendo el tablero, los jugado
 Luego elegimos los criterios para evaluar que tan bueno es un tablero. 
 Luego contar como entrenamos a los jugadores, funciones, etc.
 Resultados.
+
+
+
+POR HACER
+    - Informe
+    - Ver si los pesos se están calculando bien
+    - Ver si los valores del tablero se están calculando bien 
+        - Funciones de distancia dejan dudas
+    - Solo cargar e imprimir pesos para el jugador 1
+    - Los pesos se van al carajo -> MAL
+    - Cambio de valor maximo/minimo lo rompe
+    - Jugador random -> Entrenarlo contra este
+
+RESULTADOS:
+    - Contra el random siempre gana
+        - Deja una ficha en la base a veces y tranca
+    - Contra el AI 
+        - Se entrenó 500 veces
+        - Se jugó sin recalcular los pesos
+        - Deja una ficha en la base a veces y tranca ??????????????
+        - Learning rate 0.1 la mejor

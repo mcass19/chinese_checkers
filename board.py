@@ -1,5 +1,3 @@
-from players.player import Player
-
 class Board(object):
 
     def __init__(self, width, height):
@@ -7,11 +5,10 @@ class Board(object):
         self.height = height
         self.current_player = None
 
-        # (i,j,distance_to_opponent_base)
         self.pieces_p1 = [(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (3,1), (3,2), (4,1)]
-        self.pieces_p2 = [(9,9), (9,8), (9,7), (9,6), (8,9), (8,8), (8,7), (7,9), (7,8), (6,9)]
-
         self.target_p1 = [(9,9), (9,8), (9,7), (9,6), (8,9), (8,8), (8,7), (7,9), (7,8), (6,9)]
+        
+        self.pieces_p2 = [(9,9), (9,8), (9,7), (9,6), (8,9), (8,8), (8,7), (7,9), (7,8), (6,9)]
         self.target_p2 = [(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (3,1), (3,2), (4,1)]
     
     def set_current_player(self, current_player):
@@ -22,14 +19,11 @@ class Board(object):
             return True, 1
         elif set(self.pieces_p2) == set(self.target_p2):
             return True, 2
-        return False, 0
+        else:
+            return False, 0
 
     def do_move(self, index, position_to_move):
         if self.current_player == 1:
             self.pieces_p1[index] = position_to_move
-            self.current_player = 2
-            print('jugador 1, movio el indice ' + str(index) + ' a la posicion ' + str(position_to_move))
         else:
             self.pieces_p2[index] = position_to_move
-            self.current_player = 1
-            print('jugador 2, movio el indice ' + str(index) + ' a la posicion ' + str(position_to_move))

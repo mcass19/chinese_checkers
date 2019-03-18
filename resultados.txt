@@ -1,10 +1,53 @@
-Pesos luego de entrenamiento contra IA (100)
-0.7598392425561362
--0.2415337906921801
-0.8305519599257349
--0.1878905588871544
-0.7580523540655926
--0.24418324928308083
+TASA 0.001
+
+Pesos luego de entrenamiento contra IA (100) -> Version 1
+    Player 1 gano 41 veces
+    Player 2 gano 59 veces
+    Empataron 0 veces
+
+    0.9199341670878702
+    -1.0807541661217182
+    0.9358736422911034
+    -1.0721572592819528
+    0.9201644468868085
+    -1.0818780602190332
+
+Pesos luego de entrenamiento contra version 1 (pesos iniciales = version 1) (100) -> IA entrenada 1
+    Player 1 gano 35 veces
+    Player 2 gano 65 veces
+    Empataron 0 veces
+
+    0.7998863197108607
+    -1.201276249349932
+    0.8379337385746082
+    -1.1763499108245328
+    0.7997532154891654
+    -1.2037209230663493
+
+Pesos luego de entrenamiento contra random (pesos iniciales = version 1) (100) -> IA entrenada 2
+    Player 1 gano 3 veces
+    Player 2 gano 0 veces
+    Empataron 97 veces
+
+    0.9906130691124151
+    -1.0138741646073695
+    0.9686978497541393
+    -1.0721614915219164
+    0.991446432595685
+    -1.012118862463539
+
+IA entrenada 1 vs IA entrenada 2 (100) -> Sin aprender
+    Player 1 gano 52 veces
+    Player 2 gano 48 veces
+    Empataron 0 veces
+
+IA entrenada 1 vs IA entrenada 2 (100) -> Aprendiendo
+    Player 1 gano 33 veces
+    Player 2 gano 58 veces
+    Empataron 9 veces
+
+
+X ---------------------------------------------------------------------------------------------- X
 
 IA vs IA
     Distinta taza de aprendizaje (0.1 y 0.01)

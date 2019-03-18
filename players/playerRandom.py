@@ -97,21 +97,7 @@ class PlayerRandom(Player):
                     else:
                         lista_available_moves.append((index,next_move))
         
-        # El siguiente fragmento de codigo se implementa para evitar que el jugador random no mueva las fichas de su base,
-        # es decir, elige un movimiento random pero siempre cambia la ficha que mueve
         result = random.choice(lista_available_moves)
-        
-        # if len(self.pieces_already_move) == 10:
-        #     self.pieces_already_move = []
-        #     self.pieces_already_move.append(result[0])
-        # else:
-        #     finish_find_move = False
-        #     while not finish_find_move:
-        #         if (result[0] in self.pieces_already_move):
-        #             result = random.choice(lista_available_moves)
-        #         else:
-        #             self.pieces_already_move.append(result[0])
-        #             finish_find_move = True
 
         return result
 

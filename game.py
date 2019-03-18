@@ -33,8 +33,8 @@ class Game(object):
         p1 = player1
         p2 = player2
         first_movement = True
-        p1_prev_moves = deque([] ,3)
-        p2_prev_moves = deque([] ,3)
+        p1_prev_moves = deque([], 5)
+        p2_prev_moves = deque([], 5)
 
         while (1):
             current_player = self.board.current_player
@@ -43,9 +43,6 @@ class Game(object):
                 p1.set_actual_value_board(self.board)
 
                 index, position_to_move = p1.do_move(self.board)
-
-                if index == -1:
-                    return 0
 
                 self.board.do_move(index, position_to_move)
 
@@ -61,9 +58,6 @@ class Game(object):
 
                 index, position_to_move = p2.do_move(self.board)
 
-                if index == -1:
-                    return 0
-
                 self.board.do_move(index, position_to_move)
 
                 p2_prev_moves.append((index, position_to_move))
@@ -76,18 +70,17 @@ class Game(object):
 
             self.print_board(self.board)
 
-            if((len(p1_prev_moves) == 3 
-               and p1_prev_moves[0] == p1_prev_moves[2]) or
-               ( len(p2_prev_moves) == 3 
-               and p2_prev_moves[0] == p2_prev_moves[2])):
+            if((len(p1_prev_moves) == 5 
+               and p1_prev_moves[0] == p1_prev_moves[2]
+               and p1_prev_moves[0] == p1_prev_moves[4]
+               and p1_prev_moves[1] == p1_prev_moves[3]) 
+               or
+               (len(p2_prev_moves) == 5 
+               and p2_prev_moves[0] == p2_prev_moves[2]
+               and p2_prev_moves[0] == p2_prev_moves[4]
+               and p2_prev_moves[1] == p2_prev_moves[3])):
                 return 0
 
             end, winner = self.board.end_of_game()
             if end:
-                return winner
-
-            # is_draw_1 = p1.has_pieces_blocked(self.board)
-            # is_draw_2 = p2.has_pieces_blocked(self.board)
-
-            # if is_draw_1 or is_draw_2:
-            #     return 0             
+                return winner          

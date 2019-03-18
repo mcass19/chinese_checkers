@@ -147,60 +147,12 @@ class PlayerAI(Player):
                         max_value = next_value
                         piece_to_move = index
         
-        #if position_to_move == self.last_move:
-        #    return -1, (0,0)
-
-        self.last_move = position_to_move
-        
         if can_move:
             return piece_to_move,position_to_move
         else:
             # No hay movimiento posible
             pass
     #--------------------------------------------------------------------------------------------
-    
-    def has_pieces_blocked(self, board):
-        
-        _board = board
-
-        if (self.id == 1): 
-            pieces = board.pieces_p1
-            base = board.target_p2
-            opponent = board.pieces_p2
-        else:
-            pieces = board.pieces_p2
-            base = board.target_p1
-            opponent = board.pieces_p1
-
-        is_blocked = False
-
-        for index in range(10):
-            if pieces[index] in base:
-                cant_movements = 0
-                cant_blocked = 0
-                cant_opponents = 0
-                for (i,j) in [(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0)]:
-                    next_to_me = (pieces[index][0] + i, pieces[index][1] + j)                                    
-                    
-                    if (next_to_me[0] > 0 and next_to_me[0] <= 9 and next_to_me[1] > 0 and next_to_me[1] <= 9):
-                        cant_movements += 1
-                        if next_to_me in _board.pieces_p1 or next_to_me in _board.pieces_p2:
-                            aux_list = []
-                            next_move = next_to_me
-                            next_value = 0 
-                            (next_move, next_value) = self.do_jump(next_move, i, aux_list, _board)
-                            if next_value == -1: 
-                                if (next_to_me in opponent):
-                                    cant_opponents += 1
-                                cant_blocked += 1
-                
-                print('jugador ' + str(self.id))
-                print('ficha ' + str(index))
-                print('cant_movements ' + str(cant_movements) + ' cant_opponents ' + str(cant_opponents))
-                if cant_movements == cant_blocked and cant_opponents > 0:
-                    is_blocked = True
-
-        return is_blocked
     
     def set_actual_value_board(self, board):
         self.value_actual_board = self.board_value(board)
@@ -213,9 +165,6 @@ class PlayerAI(Player):
         v_successor = self.board_value(board)
         
         delta_board = self.learning_rate * (v_successor - self.value_actual_board)
-
-        # print(str(self.id) + 'next_board' + str(v_successor) + ' actual_board ' + str(self.value_actual_board))
-        # print('delta_board' + str(delta_board))
         
         self.w0 = self.w0 + delta_board
 

@@ -147,8 +147,8 @@ class PlayerAI(Player):
                         max_value = next_value
                         piece_to_move = index
         
-        if position_to_move == self.last_move:
-            return -1, (0,0)
+        #if position_to_move == self.last_move:
+        #    return -1, (0,0)
 
         self.last_move = position_to_move
         

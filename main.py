@@ -16,8 +16,8 @@ for i in range(10):
 
     # creación de jugadores
     p1 = PlayerAI(1, 0.001, True)
-    p2 = PlayerRandom(2) 
-    # p2 = PlayerAI(2, 0.1, False)
+    #p2 = PlayerRandom(2) 
+    p2 = PlayerAI(2, 0.001, True)
 
     game = Game(board)
 

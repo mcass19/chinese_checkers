@@ -1,6 +1,7 @@
 import os
 from board import Board
 from players.player import Player
+from collections import deque
 
 class Game(object):
     
@@ -32,6 +33,8 @@ class Game(object):
         p1 = player1
         p2 = player2
         first_movement = True
+        p1_prev_moves = deque([] ,3)
+        p2_prev_moves = deque([] ,3)
 
         while (1):
             current_player = self.board.current_player
@@ -45,6 +48,8 @@ class Game(object):
                     return 0
 
                 self.board.do_move(index, position_to_move)
+
+                p1_prev_moves.append((index, position_to_move))
 
                 if not first_movement:
                     p2.recalc_weights(self.board)
@@ -61,6 +66,8 @@ class Game(object):
 
                 self.board.do_move(index, position_to_move)
 
+                p2_prev_moves.append((index, position_to_move))
+
                 if not first_movement:    
                     p1.recalc_weights(self.board)
                 first_movement = False
@@ -68,6 +75,13 @@ class Game(object):
                 self.board.set_current_player(1)
 
             self.print_board(self.board)
+
+            if((len(p1_prev_moves) == 3 
+               and p1_prev_moves[0] == p1_prev_moves[2]) or
+               ( len(p2_prev_moves) == 3 
+               and p2_prev_moves[0] == p2_prev_moves[2])):
+                return 0
+
             end, winner = self.board.end_of_game()
             if end:
                 return winner
